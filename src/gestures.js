@@ -1,49 +1,49 @@
 /**
- * @type {string} eventStart
+ * @type {string} eventstart
  */
-var eventStart
+var eventstart
 /**
- * @type {string} eventEnd
+ * @type {string} eventend
  */
-var eventEnd
+var eventend
 /**
- * @type {string} eventMove
+ * @type {string} eventmove
  */
-var eventMove
+var eventmove
 /**
- * @type {string} eventCancel
+ * @type {string} eventcancel
  */
-var eventCancel
+var eventcancel
 
 // Pointer events for IE11 and MSEdge:
 if (window.navigator.pointerEnabled) {
-  eventStart = 'pointerdown'
-  eventEnd = 'pointerup'
-  eventMove = 'pointermove'
-  eventCancel = 'pointercancel'
+  eventstart = 'pointerdown'
+  eventend = 'pointerup'
+  eventmove = 'pointermove'
+  eventcancel = 'pointercancel'
 
   // Pointer events for IE10 and WP8:
 } else if (window.navigator.msPointerEnabled) {
-  eventStart = 'MSPointerDown'
-  eventEnd = 'MSPointerUp'
-  eventMove = 'MSPointerMove'
-  eventCancel = 'MSPointerCancel'
+  eventstart = 'MSPointerDown'
+  eventend = 'MSPointerUp'
+  eventmove = 'MSPointerMove'
+  eventcancel = 'MSPointerCancel'
 
   // Touch events for iOS & Android:
 } else if ('ontouchstart' in window) {
-  eventStart = 'touchstart'
-  eventEnd = 'touchend'
-  eventMove = 'touchmove'
-  eventCancel = 'touchcancel'
+  eventstart = 'touchstart'
+  eventend = 'touchend'
+  eventmove = 'touchmove'
+  eventcancel = 'touchcancel'
 
   // Mouse events for desktop:
 } else {
-  eventStart = 'mousedown'
-  eventEnd = 'mouseup'
-  eventMove = 'mousemove'
-  eventCancel = 'mouseout'
+  eventstart = 'mousedown'
+  eventend = 'mouseup'
+  eventmove = 'mousemove'
+  eventcancel = 'mouseout'
 }
-export { eventStart, eventEnd, eventMove, eventCancel }
+export { eventstart, eventend, eventmove, eventcancel }
 
 /**
  * Fire a gesture on an element and pass it some optional data.
@@ -140,11 +140,11 @@ export var gestures = function() {
     /**
      * Capture start of event:
      */
-    body.addEventListener(eventStart, function(e) {
+    body.addEventListener(eventstart, function(e) {
       now = Date.now()
       delta = now - (touch.last || now)
 
-      if (eventStart === 'mousedown') {
+      if (eventstart === 'mousedown') {
         touch.el = parentIfText(/** @type{Node} */ (e.target))
         if (e.target['nodeName'] === 'ripple') {
           touch.el = e.target['parentNode']
@@ -176,9 +176,9 @@ export var gestures = function() {
     /**
      * Capture event move:
      */
-    body.addEventListener(eventMove, function(e) {
+    body.addEventListener(eventmove, function(e) {
       cancelLongTap()
-      if (eventMove === 'mousemove') {
+      if (eventmove === 'mousemove') {
         touch.x2 = e['pageX']
         touch.y2 = e['pageY']
       } else {
@@ -198,7 +198,7 @@ export var gestures = function() {
     /**
      * Capture event end:
      */
-    body.addEventListener(eventEnd, function(e) {
+    body.addEventListener(eventend, function(e) {
       cancelLongTap()
       if (!!touch.el) {
         /**

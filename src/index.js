@@ -1,1 +1,10 @@
-export { eventStart, eventEnd, eventMove, eventCancel, trigger, gestures, disableTextSelection, enableTextSelection } from './gestures'
+export {
+  eventstart,
+  eventend,
+  eventmove,
+  eventcancel,
+  trigger,
+  gestures,
+  disableTextSelection,
+  enableTextSelection
+} from './gestures'

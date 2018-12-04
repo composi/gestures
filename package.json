@@ -1,6 +1,6 @@
 {
   "name": "@composi/gestures",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cross-platform gesture library for desktop and mobile.",
   "main": "index.js",
   "jsnext:main": "./index.js",
@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "bundle": "rollup -c",
-    "build": "npm run format && npm run lint && npm run bundle && npm run minify",
+    "build": "npm run format && npm run lint && npm run bundle",
     "format": "prettier --no-semi --single-quote --write ./src/*.js",
     "lint": "eslint --config ./.eslintrc.json lib",
     "start": "npm run build",

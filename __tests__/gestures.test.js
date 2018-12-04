@@ -5,22 +5,13 @@ import htm from 'https://unpkg.com/htm/dist/htm.mjs?module'
 // @ts-ignore
 import { mergeObjects } from 'https://unpkg.com/@composi/merge-objects/src/index.js?module'
 // @ts-ignore
-import { eventStart, eventEnd, eventMove, eventCancel, trigger, gestures, disableTextSelection, enableTextSelection } from '../src/gestures.js?module'
+import { eventstart, eventend, eventmove, eventcancel, trigger, gestures, disableTextSelection, enableTextSelection } from '../src/gestures.js?module'
 
 const html = htm.bind(h)
 gestures()
 
 const Msg = union(['SwipeLeft', 'SwipeRight', 'SwipeUp', 'SwipeDown', 'Tap', 'DblTap', 'LongTap'])
 
-// function actions(state, msg) {
-//   const prevState = mergeObjects(state)
-//   return Msg.match(msg, {
-//     'AddItem': () => {
-//       prevState.response = 'You tapped'
-//       return [prevState]
-//     }
-//   })
-// }
 
 function actions(state, msg) {
   return Msg.match(msg, {
