@@ -1,0 +1,54 @@
+{
+  "name": "@composi/gestures",
+  "version": "1.0.0",
+  "description": "Cross-platform gesture library for desktop and mobile.",
+  "main": "index.js",
+  "jsnext:main": "./index.js",
+  "module": "dist/gestures.mjs",
+  "files": [
+    "index.js",
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "bundle": "rollup -c",
+    "build": "npm run format && npm run lint && npm run bundle && npm run minify",
+    "format": "prettier --no-semi --single-quote --write ./src/*.js",
+    "lint": "eslint --config ./.eslintrc.json lib",
+    "start": "npm run build",
+    "test": "browser-sync . --index __tests__/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/composi/gestures.git"
+  },
+  "keywords": [
+    "touch",
+    "gesture",
+    "tap",
+    "swipe"
+  ],
+  "author": "Robert Biggs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/composi/gestures/issues"
+  },
+  "homepage": "https://github.com/composi/gestures#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "browser-sync": "^2.21.0",
+    "eslint": "^4.19.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.13.7",
+    "rollup": "^0.66.2",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-babel-minify": "^6.0.0",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "typescript": "^3.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
