@@ -80,13 +80,13 @@ function announceSwipe() {
 // Define inline events:
 function TappableButton(props) {
   return (
-    <button onTap={() => announceTap()}>Tap</button>
+    <button ontap={() => announceTap()}>Tap</button>
   )
 },
 
 function SwipableButton(props) {
   return (
-    <button onSwipe={() => announceSwipe()}>Swipe</button>
+    <button onswipe={() => announceSwipe()}>Swipe</button>
   )
 }
 ```
@@ -146,7 +146,7 @@ class Button extends React.Component {
   }
   render() {
     return (
-      <button ref={this.button} onSwipe={e => this.handleSwipe(e)}>Swipe Me!</button>
+      <button ref={this.button} onswipe={e => this.handleSwipe(e)}>Swipe Me!</button>
     )
   }
   handleSwipe(e) {
