@@ -25,17 +25,17 @@ If you fail to execute `gestures()` after importing, the gestures will never get
 
 @composi/gestures provides normalised events and custom gestures for desktop and mobile. To facility easier cross-platform event handle, @composi/gestures provides the following four event aliases:
 
-1. eventStart
-2. eventEnd
-3. eventMove
-4. eventCancel
+1. eventstart
+2. eventend
+3. eventmove
+4. eventcancel
 
 On desktop these resolve to `mousedown`, `mouseup` (click), `mousemove` and `mouseout`. On a device with support for pointer events, these become: `pointerdown`, `pointerup`, `pointermove` and `pointercancel`. On a device that supports touch events these become: `touchstart`, `touchend`, `touchmove` and `touchcancel`. You can use these event aliases just like you would any other events, with the assurance that they will work the same everywhere:
 
 ```javascript
-import { eventStart, eventEnd, eventMove, eventCancel } from '@composi/gestures'
+import { eventstart, eventend, eventmove, eventcancel } from '@composi/gestures'
 
-document.querySelector('button').addEventListener(eventEnd, (e) => {
+document.querySelector('button').addEventListener(eventend, (e) => {
   e.target.classList.toggle('selected')
 })
 ```
