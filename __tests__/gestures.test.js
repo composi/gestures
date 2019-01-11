@@ -18,27 +18,27 @@ function actions(state, msg) {
     'SwipeLeft': () => {
       state.response = 'Swipe LEFT completed!'
       return [state]
-    }, 
+    },
     'SwipeRight': () => {
       state.response = 'You just swiped RIGHT!'
       return [state]
-    }, 
+    },
     'SwipeUp': () => {
       state.response = 'Woohoo! Swiping UP!'
       return [state]
-    }, 
+    },
     'SwipeDown': () => {
       state.response = 'We\'re going DOWN!'
       return [state]
-    }, 
+    },
     'Tap': () => {
       state.response = 'That was a Tap!'
       return [state]
-    }, 
+    },
     'DblTap': () => {
       state.response = 'That was a Double Tap!'
       return [state]
-    }, 
+    },
     'LongTap': () => {
       state.response = 'This is a Looooong Tap!'
       return [state]
@@ -47,12 +47,12 @@ function actions(state, msg) {
 }
 
 function List({state, send}) {
-  return html`<ul class='list editing' 
-    onswipeleft=${() => send(Msg.SwipeLeft())} 
-    onswiperight=${() => send(Msg.SwipeRight())} 
-    onswipeup=${() => send(Msg.SwipeUp())} 
-    onswipedown=${() => send(Msg.SwipeDown())} 
-    ontap=${() => send(Msg.Tap())} 
+  return html`<ul class='list editing'
+    onswipeleft=${() => send(Msg.SwipeLeft())}
+    onswiperight=${() => send(Msg.SwipeRight())}
+    onswipeup=${() => send(Msg.SwipeUp())}
+    onswipedown=${() => send(Msg.SwipeDown())}
+    ontap=${() => send(Msg.Tap())}
     ondbltap=${() => send(Msg.DblTap())}
     onlongtap=${() => send(Msg.LongTap())}
     >
@@ -60,9 +60,9 @@ function List({state, send}) {
     <div>
       <h3>Gesture:</h3>
       <h2 class='attentionGrabber' id='gestureResponse'>${state.response}</h2>
-      <br>
-      <br>
-      <br>
+      <br/>
+      <br/>
+      <br/>
     </div>
   </li>
 </ul>`
@@ -85,4 +85,3 @@ const program = {
 }
 
 run(program)
-
