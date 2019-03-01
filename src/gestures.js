@@ -50,8 +50,9 @@ export { eventstart, eventend, eventmove, eventcancel }
  * @param {Element} el
  * @param {string} event
  * @param {*} [data]
+ * @param {Event} originalEvent
  */
-export function trigger(el, event, data) {
+export function trigger(el, event, data, originalEvent) {
   if (!event) {
     console.error('No event was provided. You do need to provide one.')
     return
@@ -61,6 +62,7 @@ export function trigger(el, event, data) {
     var evtObj = document.createEvent('Events')
     evtObj.initEvent(event, true, false)
     evtObj['data'] = data
+    evtObj['originalEvent'] = originalEvent
     el.dispatchEvent(evtObj)
   }
 }
@@ -103,12 +105,12 @@ export var gestures = function() {
       : 'down'
   }
 
-  function longTap() {
+  function longTap(event) {
     longTapTimeout = null
     if (touch.last) {
       try {
         if (touch && touch.el) {
-          trigger(touch.el, 'longtap')
+          trigger(touch.el, 'longtap', null, event)
           touch = {}
         }
       } catch (err) {}
@@ -170,7 +172,7 @@ export var gestures = function() {
         touch.isDoubleTap = true
       }
       touch.last = now
-      longTapTimeout = setTimeout(longTap, longTapDelay)
+      longTapTimeout = setTimeout(longTap, longTapDelay, e)
     })
 
     /**
@@ -216,8 +218,8 @@ export var gestures = function() {
                 touch.y1,
                 touch.y2
               )
-              trigger(touch.el, 'swipe', direction)
-              trigger(touch.el, 'swipe' + direction)
+              trigger(touch.el, 'swipe', direction, e)
+              trigger(touch.el, 'swipe' + direction, null, e)
               touch = {}
             }
           }, 0)
@@ -235,7 +237,7 @@ export var gestures = function() {
              */
             if (touch && touch.isDoubleTap) {
               if (touch && touch.el) {
-                trigger(touch.el, 'dbltap')
+                trigger(touch.el, 'dbltap', null, e)
                 e.preventDefault()
                 touch = {}
               }
@@ -246,7 +248,7 @@ export var gestures = function() {
               touchTimeout = setTimeout(function() {
                 touchTimeout = null
                 if (touch && touch.el && !touch.move) {
-                  trigger(touch.el, 'tap')
+                  trigger(touch.el, 'tap', null, e)
                   touch = {}
                 } else {
                   /**

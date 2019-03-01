@@ -15,32 +15,39 @@ const Msg = union(['SwipeLeft', 'SwipeRight', 'SwipeUp', 'SwipeDown', 'Tap', 'Db
 
 function actions(state, msg) {
   return Msg.match(msg, {
-    'SwipeLeft': () => {
+    'SwipeLeft': (e) => {
       state.response = 'Swipe LEFT completed!'
+      console.log(`originalEvent`, e);
       return [state]
     },
-    'SwipeRight': () => {
+    'SwipeRight': (e) => {
       state.response = 'You just swiped RIGHT!'
+      console.log(`originalEvent`, e);
       return [state]
     },
-    'SwipeUp': () => {
+    'SwipeUp': (e) => {
       state.response = 'Woohoo! Swiping UP!'
+      console.log(`originalEvent`, e);
       return [state]
     },
-    'SwipeDown': () => {
+    'SwipeDown': (e) => {
       state.response = 'We\'re going DOWN!'
+      console.log(`originalEvent`, e);
       return [state]
     },
-    'Tap': () => {
+    'Tap': (e) => {
       state.response = 'That was a Tap!'
+      console.log(`originalEvent`, e);
       return [state]
     },
-    'DblTap': () => {
+    'DblTap': (e) => {
       state.response = 'That was a Double Tap!'
+      console.log(`originalEvent`, e);
       return [state]
     },
-    'LongTap': () => {
+    'LongTap': (e) => {
       state.response = 'This is a Looooong Tap!'
+      console.log(`originalEvent`, e);
       return [state]
     }
   })
@@ -48,13 +55,13 @@ function actions(state, msg) {
 
 function List({state, send}) {
   return html`<ul class='list editing'
-    onswipeleft=${() => send(Msg.SwipeLeft())}
-    onswiperight=${() => send(Msg.SwipeRight())}
-    onswipeup=${() => send(Msg.SwipeUp())}
-    onswipedown=${() => send(Msg.SwipeDown())}
-    ontap=${() => send(Msg.Tap())}
-    ondbltap=${() => send(Msg.DblTap())}
-    onlongtap=${() => send(Msg.LongTap())}
+    onswipeleft=${(e) => send(Msg.SwipeLeft(e))}
+    onswiperight=${(e) => send(Msg.SwipeRight(e))}
+    onswipeup=${(e) => send(Msg.SwipeUp(e))}
+    onswipedown=${(e) => send(Msg.SwipeDown(e))}
+    ontap=${(e) => send(Msg.Tap(e))}
+    ondbltap=${(e) => send(Msg.DblTap(e))}
+    onlongtap=${(e) => send(Msg.LongTap(e))}
     >
   <li>
     <div>
