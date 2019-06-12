@@ -1,6 +1,6 @@
 {
   "name": "@composi/gestures",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Cross-platform gesture library for desktop and mobile.",
   "main": "dist/gestures.js",
   "jsnext:main": "./index.js",
@@ -37,7 +37,7 @@
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.0",
     "babel-core": "^7.0.0-bridge.0",
-    "browser-sync": "^2.21.0",
+    "browser-sync": "^2.26.7",
     "eslint": "^4.19.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.15.3",
