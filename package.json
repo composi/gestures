@@ -1,6 +1,6 @@
 {
   "name": "@composi/gestures",
-  "version": "1.0.7",
+  "version": "1.0.8-rc1",
   "description": "Cross-platform gesture library for desktop and mobile.",
   "main": "dist/gestures.js",
   "jsnext:main": "./index.js",
