@@ -71,7 +71,7 @@ export function trigger(el, event, data, originalEvent) {
  * Enable gestures in the browser.
  * @return {void} undefined
  */
-export var gestures = function() {
+export var gestures = function(target) {
   var touch = {}
   var touchTimeout
   var swipeTimeout
@@ -134,15 +134,15 @@ export var gestures = function() {
   /**
    * Execute this after DOM loads:
    */
-  ;(function() {
+  ;(function(target) {
     var now
     var delta
-    var body = document.body
+    var element = target || document.body
 
     /**
      * Capture start of event:
      */
-    body.addEventListener(eventstart, function(e) {
+    element.addEventListener(eventstart, function(e) {
       now = Date.now()
       delta = now - (touch.last || now)
 
@@ -178,7 +178,7 @@ export var gestures = function() {
     /**
      * Capture event move:
      */
-    body.addEventListener(eventmove, function(e) {
+    element.addEventListener(eventmove, function(e) {
       cancelLongTap()
       if (eventmove === 'mousemove') {
         touch.x2 = e['pageX']
@@ -200,7 +200,7 @@ export var gestures = function() {
     /**
      * Capture event end:
      */
-    body.addEventListener(eventend, function(e) {
+    element.addEventListener(eventend, function(e) {
       cancelLongTap()
       if (!!touch.el) {
         /**
@@ -264,8 +264,8 @@ export var gestures = function() {
         return
       }
     })
-    body.addEventListener('touchcancel', cancelAll)
-  })()
+    element.addEventListener('touchcancel', cancelAll)
+  })(target)
 }
 
 /**
