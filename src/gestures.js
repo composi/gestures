@@ -50,7 +50,7 @@ export { eventstart, eventend, eventmove, eventcancel }
  * @param {Element} el
  * @param {string} event
  * @param {*} [data]
- * @param {Event} originalEvent
+ * @param {Event} [originalEvent]
  */
 export function trigger(el, event, data, originalEvent) {
   if (!event) {
